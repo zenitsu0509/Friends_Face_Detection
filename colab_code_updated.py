@@ -1,4 +1,3 @@
-
 from IPython.display import display, Javascript, Image
 from google.colab.output import eval_js
 from base64 import b64decode, b64encode
@@ -12,12 +11,7 @@ from PIL import Image, ImageOps
 import numpy as np
 
 def js_to_image(js_reply):
-  """
-  Params:
-          js_reply: JavaScript object containing image from webcam
-  Returns:
-          img: OpenCV BGR image
-  """
+
   image_bytes = b64decode(js_reply.split(',')[1])
   jpg_as_np = np.frombuffer(image_bytes, dtype=np.uint8)
   img = cv2.imdecode(jpg_as_np, flags=1)
